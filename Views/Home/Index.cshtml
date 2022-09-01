@@ -1,0 +1,82 @@
+﻿@model Tbl_Car
+<style>
+
+
+th{
+
+border:1px solid  black;
+background-color: bisque;
+
+}
+tr:nth-child(odd)
+{
+background-color: bisque;
+}
+
+</style>
+
+
+
+<div class="text-center">
+
+<p class="alert alert-primary"> please fill  the following fields: </p>
+
+<form action="/home/addcar" method="get">
+    <input type="text" asp-for="name" required placeholder="name">
+    <input type="text" asp-for="model" required placeholder="model">
+    <input type="text" asp-for="price" required placeholder="price">
+
+    <button class="btn btn-success" type="submit">save</button>
+
+
+</form>
+
+
+<table class="table" style="margin-top:30px ; margin-bottom: 60px;">
+    <tr>
+        <th>row</th>
+        <th>name</th>
+<th>model</th>
+<th>price</th>
+<th>delete</th>
+<th>edit</th>
+    </tr>
+
+    @if (ViewBag.result != null )
+    {
+        int i = 1;
+        @foreach (var item in ViewBag.result)
+{
+    <tr>
+        <td>@i</td>
+<td>@item.name</td>
+<td>@item.model</td>
+<td>@item.price</td>
+<td>
+    <a onclick="return confirm ('are you sure??')" href="/home/delete/@item.id" class="btn btn-danger">delete </a>
+</td>
+<td>
+
+    <a href="/home/edit/@item.id" class="btn btn-warning" >edit</a>
+</td>
+
+    </tr>
+i++;
+}
+    }
+
+
+    
+
+
+
+
+
+</table>
+
+
+
+
+
+
+</div>

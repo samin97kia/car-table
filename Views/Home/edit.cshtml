@@ -1,0 +1,13 @@
+@model Tbl_Car
+
+<form action="/home/updatecar" method="get">
+
+<input type="text" asp-for="id" style="display:none ;">
+    <input type="text" asp-for="name" required placeholder="name">
+    <input type="text" asp-for="model" required placeholder="model">
+    <input type="text" asp-for="price" required placeholder="price">
+
+    <button class="btn btn-success" type="submit">update</button>
+
+
+</form>
